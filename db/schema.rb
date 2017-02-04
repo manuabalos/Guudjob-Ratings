@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170204013605) do
   create_table "ratings", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "profile_id"
+    t.integer  "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

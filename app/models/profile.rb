@@ -3,5 +3,4 @@ class Profile < ActiveRecord::Base
 	has_many :ratings
 
 	validates :name, presence: true
-	validates :surname, allow_nil: true, allow_blank: true
 end

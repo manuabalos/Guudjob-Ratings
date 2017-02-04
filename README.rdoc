@@ -1,28 +1,23 @@
-== README
+== Guudjob Ratings
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+User:
+- Tiene que tener obligatoriamente un email y este tiene que ser único
+- Puede tener solo 3 estados posibles: aprobado, no aprobado y pendiente. Tienes que asegurarte que solo puedan tener uno de esos estados
+- Tiene una lista de perfiles (profile)
+- Tiene una lista de valoraciones emitidas
+- Necesitamos un scope (o similar) para obtener los usuarios con estado “pendiente”.
 
-Things you may want to cover:
+Profile:
+- Un perfil pertenece a un único usuario
+- Tiene que tener un campo “name” obligatorio
+- Tiene que tener un campo “surname” de tipo opcional
+- Tiene una lista de valoraciones recibidas
 
-* Ruby version
+Rating:
+- Es una relación entre un User (el que crea la valoración) y un Profile (perfil valorado).
+- Un usuario solo puede valorar una única vez a un perfil (tú como usuario no puedes valorar 2 veces al mismo perfil)
+- Una valoración pertenece a un único User (el que crea la valoración)
+- Una valoración pertenece a un único Profile (el perfil que recibe la valoración)
+- Un usuario valora un perfil (que a su vez tiene un usuario). Tenemos que asegurarnos que nadie pueda valorar a un perfil de sí mismo. Ejemplo: Soy un usuario U con los perfiles P1 y P2. No puede existir una valoración de U hacia P1 o de U hacia P2.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Además de esto la segunda parte de la prueba consiste en desarrollar el método POST RatingsController#create, que se usará para crear una valoración desde web. Tienes que crear el método create para el controller correspondiente, recibir parámetros y poder crear un objeto Rating a partir de un usuario valorados y un perfil valorado. Si hubiera algún error al guardar tienes que pintar un mensaje por pantalla (puedes suponer que ya está instalado Bootstrap) para saber qué ha pasado. Puedes dar por supuesto que el usuario que valora es el que se obtiene al llamar a current_user (de Devise).

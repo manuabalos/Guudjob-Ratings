@@ -23,6 +23,6 @@ class Rating < ActiveRecord::Base
 
 		def rated_yourself
 			profile = Profile.find self.profile_id
-			errors.add :base, 'You cannot rate yourself.' if profile.id == self.user_id
+			errors.add :base, 'You cannot rate yourself.' if profile.user_id == self.user_id
 		end
 end
